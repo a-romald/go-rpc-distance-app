@@ -1,0 +1,45 @@
+<nav aria-label="...">    
+    <ul class="pagination">
+        {{ if pages.Previous == 0 }}
+            <li class="page-item disabled">
+                <span class="page-link">Prev</span>
+            </li>
+        {{ else }}
+            <li class="page-item">
+                {{ if pages.Sort }}
+                    <a class="page-link" href="?page={{ pages.Previous }}&sort={{ pages.Sort }}">Prev</a>
+                {{ else }}
+                    <a class="page-link" href="?page={{ pages.Previous }}">Prev</a>
+                {{ end }}
+            </li>
+        {{ end }}
+        {{range key, value := pages.AllPages}}
+            {{ if pages.CurrentPage == value }}
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ pages.CurrentPage }}</span>
+                </li>
+            {{ else }}
+                <li class="page-item">
+                    {{ if pages.Sort }}
+                        <a class="page-link" href="?page={{value}}&sort={{ pages.Sort }}">{{value}}</a>
+                    {{ else }}
+                        <a class="page-link" href="?page={{value}}">{{value}}</a>
+                {{ end }}
+                </li>
+            {{ end }}
+        {{end}}                
+        {{ if pages.CurrentPage == pages.TotalPage }}
+            <li class="page-item disabled">
+                <span class="page-link">Next</span>
+            </li>
+        {{ else }}
+            <li class="page-item">
+                {{ if pages.Sort }}
+                    <a class="page-link" href="?page={{ pages.Next }}&sort={{ pages.Sort }}">Next</a>
+                {{ else }}
+                    <a class="page-link" href="?page={{ pages.Next }}">Next</a>
+                {{ end }}
+            </li>
+        {{ end }}                
+    </ul>
+</nav>

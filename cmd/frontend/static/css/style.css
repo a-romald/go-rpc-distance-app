@@ -1,0 +1,82 @@
+.buts {
+  display: flex;
+  justify-content: center;
+}
+
+.buts button {
+    width: 200px;
+    margin: 20px;
+}
+
+.buts a {
+    display: block;
+    width: 200px;
+    margin: 20px;
+    color: white;
+}
+
+.buts a:hover {
+    color: white;
+}
+
+.all-fieldsets {
+    margin-bottom: 20px;
+}
+
+.row-fieldset {
+    width: 100%;
+    display: none;
+    margin: 5px 0;
+    min-width: 770px;
+}
+
+.control-group {
+    display: flex;    
+    margin-left: 50px;
+    width: 100%;
+}
+
+.header-group {
+    margin-bottom: 25px;
+}
+
+.row-group {
+    margin-bottom: 20px;
+}
+
+.mini-group {
+    width: 50px;
+    font-size: 27px;
+}
+
+.text-label {
+    width: 300px;
+    display: block;    
+    font-weight: bold;
+}
+
+.button-label {
+    width: 50px;
+    display: block;    
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+.text-control {
+    width: 285px;    
+    display: block;    
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.dist {
+    display: none;
+    height: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+th a.asc:after { content: "▼"; }
+th a.desc:after { content: "▲"; }

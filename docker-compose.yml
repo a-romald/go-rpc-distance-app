@@ -1,0 +1,68 @@
+services:
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    container_name: frontend
+    environment:
+      FRONTEND_PORT: "8000"
+      RPC_PORT: "5000"
+      PAGE_SIZE: "25"
+      SORT_BY: "-created_at"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    #tty: true
+    restart: on-failure
+    depends_on:
+      - mysql
+    deploy:
+      mode: replicated
+      replicas: 1
+    networks:
+      - backend
+
+  rpc-server:
+    build:
+      context: .
+      dockerfile: docker/rpc-server/Dockerfile
+    container_name: rpc-server
+    environment:
+      RPC_PORT: "5000"
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    #tty: true
+    restart: on-failure
+    depends_on:
+      - mysql
+    deploy:
+      mode: replicated
+      replicas: 1
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:8.0.40    
+    container_name: mysql
+    ports:
+        - 3306:3306
+    volumes:        
+        - ./db-data/mysql:/var/lib/mysql
+        - ./db-data/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:        
+        MYSQL_ROOT_PASSWORD: secret
+        MYSQL_DATABASE: geodb
+        MYSQL_USER: user
+        MYSQL_PASSWORD: secret
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: bridge
