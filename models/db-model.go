@@ -36,7 +36,6 @@ type Pagination struct {
 	TotalPage   int
 	AllPages    []int
 	Sort        string
-	SortExists  bool
 }
 
 func (m *BaseModel) GetLocation(gl GeoLocation) (GeoLocation, error) {
