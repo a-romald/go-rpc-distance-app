@@ -1,4 +1,4 @@
-<nav aria-label="...">    
+<nav aria-label="...">
     <ul class="pagination">
         {{ if pages.Previous == 0 }}
             <li class="page-item disabled">
@@ -27,7 +27,7 @@
                 {{ end }}
                 </li>
             {{ end }}
-        {{end}}                
+        {{end}}
         {{ if pages.CurrentPage == pages.TotalPage }}
             <li class="page-item disabled">
                 <span class="page-link">Next</span>
@@ -40,6 +40,6 @@
                     <a class="page-link" href="?page={{ pages.Next }}">Next</a>
                 {{ end }}
             </li>
-        {{ end }}                
+        {{ end }}
     </ul>
 </nav>

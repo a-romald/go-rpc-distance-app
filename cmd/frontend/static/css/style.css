@@ -80,3 +80,29 @@
 
 th a.asc:after { content: "▼"; }
 th a.desc:after { content: "▲"; }
+
+.home_link {
+    width: 80px;
+    float: right;
+    position: relative;
+    top: -55px;
+    font-size: 18px;
+}
+
+.home_link a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.results_link {
+    width: 80px;
+    float: left;
+    margin-right: 10px;
+}
+
+.results_link a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
